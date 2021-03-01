@@ -3,7 +3,7 @@
 # Set up vars
 $acrName = Read-Host "Acr name?"
 $gitUser = Read-Host "GH username?"
-$gitPat = Read-Host -Message "pat?"
+$gitPat = Read-Host -Prompt "gitPat?"
 
 # show the existing ACR
 az acr show --name $acrName --query name
@@ -17,7 +17,7 @@ This task specifies that any time code is committed to the main branch in the re
      ensuring the built image correlates to a specific build, and is tagged uniquely.
 #>
 "az acr task create --registry $acrName --name taskhelloworld --image helloworld:{{.Run.ID}} --context https://github.com/$gitUser/acr-build-helloworld-node.git#main --file Dockerfile --git-access-token $gitPat" | Set-Clipboard
-
+# az acr task delete --registry $acrName --name taskhelloworld  
 # show task
 az acr task list -r $acrName
 
