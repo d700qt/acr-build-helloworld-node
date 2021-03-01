@@ -16,7 +16,8 @@ This task specifies that any time code is committed to the main branch in the re
   The --image argument specifies a parameterized value of {{.Run.ID}} for the version portion of the image's tag
      ensuring the built image correlates to a specific build, and is tagged uniquely.
 #>
-"az acr task create --registry $acrName --name taskhelloworld --image helloworld:{{.Run.ID}} --context https://github.com/$gitUser/acr-build-helloworld-node.git#main --file Dockerfile --git-access-token $gitPat" | Set-Clipboard
+"az acr task create --registry $acrName --name taskhelloworld --image helloworld:{{.Run.ID}} --context https://github.com/$gitUser/acr-build-helloworld-node.git#main --file Dockerfile --git-access-token $gitPat"
+
 # az acr task delete --registry $acrName --name taskhelloworld  
 # show task
 az acr task list -r $acrName
