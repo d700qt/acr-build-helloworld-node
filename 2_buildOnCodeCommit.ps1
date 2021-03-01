@@ -1,5 +1,6 @@
 # Taken from https://docs.microsoft.com/en-us/azure/container-registry/container-registry-tutorial-build-task
 
+# Set up vars
 $acrName = Read-Host "Acr name?"
 $gitUser = Read-Host "GH username?"
 $gitPat = Read-Host -Message "pat?"
@@ -26,3 +27,5 @@ az acr task run -r $acrName --name taskhelloworld
 
 # List the task runs
 az acr task list-runs -r $acrName --query [].name
+
+az acr task logs -r $acrName
